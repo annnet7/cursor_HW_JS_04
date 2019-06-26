@@ -143,20 +143,20 @@ console.log('task 9:');
 function toUppercase(str) {
     let newStr = '';
     for (let i = 0; i < str.length; i++) {
-        var char = str.charCodeAt(i);
+        let char = str.charCodeAt(i);
         if (char >= 97 && char <= 122) {
             newStr += String.fromCharCode(char - 32);
-        }
+        } else newStr += str[i];
     }
     return newStr;
 }
-console.log(toUppercase('abc')); // 'ABC'
+console.log(toUppercase('abc 1Abc')); // 'ABC'
 
 /*
     Task 10
 A function which removes duplication of letters in string. The function must be case-insensitive.
 */
-console.log('task 10:');
+console.log('task 10: Helo I am rn ');
 
 function removeDuplicationLetters(str) {
 
@@ -164,16 +164,22 @@ function removeDuplicationLetters(str) {
         newStr = '';
     for (let i = 0; i < str.length; i++) {
         //console.log(checkStr.search(str[i]));
-        if (checkStr.search(str[i].toLowerCase()) == (-1)) {
-            checkStr += str[i].toLowerCase();
-            newStr += str[i];
-        }
+        let lowStr = str.toLowerCase();
+        let char = lowStr.charCodeAt(i);
+        if (char >= 97 && char <= 122) {
+            if (checkStr.indexOf(lowStr[i]) == (-1)) {
+                checkStr += lowStr[i];
+                newStr += str[i];
+            }
+        } else newStr += str[i];
     }
+
     return newStr;
 
 }
 console.log(removeDuplicationLetters('Hello I am Iron Man')); // 'Helo I am rn '
 console.log(removeDuplicationLetters('AaaaBbcCCc'));
+console.log(removeDuplicationLetters('AaaaBb 7! &CCc'));
 /*
     Task 11
 A function that when given a number n returns the n-th number in the Fibonacci Sequence. The sequence starts from 1 and looks like this: 1, 1, 2, 3, 5, 8, 13, 21…
