@@ -23,7 +23,8 @@ function reverse(str) {
         }
         return newStr;
     }
-    return 'this is not a str';
+    //return 'this is not a str';
+    throw new Error('str must be a string'); //Исправление ошибки 1.
 }
 console.log(reverse('abc')); // 'cba'
 
@@ -108,10 +109,10 @@ console.log('task 7:');
 
 function firstAndLastToUpper(str) {
 
-    let l = str.length;
+    const strLenth = str.length; // сделала константой и переименовала - теперь длина переменной такая-же как и строка обращения к длине и ее прикол исчез - но сказали исправить.
     let newStr = (str[0]).toUpperCase();
-    newStr += str.substring(1, l - 1);
-    newStr += str[l - 1].toUpperCase();
+    newStr += str.substring(1, strLenth - 1);
+    newStr += str[strLenth - 1].toUpperCase();
 
     return newStr;
 }
@@ -127,7 +128,7 @@ function cursorCheck(str) {
     str = str.toLowerCase();
     /*console.log(str.search('ostap'));*/
 
-    return (str.search('ironman') != (-1) || str.search('cursor') != (-1) || str.search('ostap') != (-1)) ? true : false;
+    return (str.search('ironman') != (-1) || str.search('cursor') != (-1) || str.search('ostap') != (-1)); //? true : false - проверка условия и так вернет тру или фолс
 
 }
 console.log(cursorCheck('Hello I am OstaP')); // true
@@ -164,9 +165,9 @@ function removeDuplicationLetters(str) {
         newStr = '';
     for (let i = 0; i < str.length; i++) {
         //console.log(checkStr.search(str[i]));
-        let lowStr = str.toLowerCase();
-        let char = lowStr.charCodeAt(i);
-        if (char >= 97 && char <= 122) {
+        const lowStr = str.toLowerCase();
+        const charToCheck = lowStr.charCodeAt(i); //исправила название переменной
+        if (charToCheck >= 97 && charToCheck <= 122) {
             if (checkStr.indexOf(lowStr[i]) == (-1)) {
                 checkStr += lowStr[i];
                 newStr += str[i];
@@ -184,7 +185,7 @@ console.log(removeDuplicationLetters('AaaaBb 7! &CCc'));
     Task 11
 A function that when given a number n returns the n-th number in the Fibonacci Sequence. The sequence starts from 1 and looks like this: 1, 1, 2, 3, 5, 8, 13, 21…
 */
-console.log('task 10:');
+console.log('task 11:');
 
 function fibonacci(n) {
     let fibo = [0, 1];
